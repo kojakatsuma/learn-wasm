@@ -19,14 +19,11 @@ pub fn main_js() -> Result<(), JsValue> {
     #[cfg(debug_assertions)]
     console_error_panic_hook::set_once();
     let window = web_sys::window().expect("no global `window` exists");
-    window.alert_with_message("Hello World !!!").unwrap();
     let document = window.document().expect("should have a document on window");
     let body = document.body().expect("document should have a body");
     let val = document.create_element("p")?;
     val.set_inner_html("Hello from Rust!");
     body.append_child(&val)?;
     // Your code goes here!
-    web_sys::console::log_1(&JsValue::from_str("Hello world!"));
-
     Ok(())
 }
